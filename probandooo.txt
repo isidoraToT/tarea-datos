@@ -1,0 +1,52 @@
+/*****
+* función
+debe relacionar el rut del colaborador con su respectiva estructura de saldo
+obtiene el saldo del servicio
+    saldo = x
+
+accede al servicio haciendo uso del entero entregado 
+1 una sentencia del tipo if relaciona el parameto de servicio con el dato del archivo correspondiente
+   almacena el dato del saldo en una variable de tipo entero
+
+1 debe abrir el archivo de consumo, y revisar si existe o si posee información
+1   en caso de no existir, debe abrir un archivo donde almacene el consumo del colaborador ios::out
+1   en caso de poseer info, abrir el archivo en modo lectura
+1       debe revisar si es q existen consumos previos del colaborador en el servicio especificado ios::in
+
+1       si existe, se debe restar la cantidad de consumos al saldo
+1           si es un num distinto de cero, agrega el consumo al archivo y retorna verdadero ios:app
+1           si es cero, retorna falso
+
+
+* returns:
+* bool. retorna un num distinto a cero (V) si el colaborador tiene saldo para el ticket, y cero (F) en otro caso
+*****/
+
+
+
+/*  ctes. servicios                 estructura saldo (bin)                  archivo registro (ascii)
+int const SERV_DESAYUNO = 0;        struct SaldoColaborador {               13314801 -9 DESAYUNO
+int const SERV_ALMUERZO = 1;        char rut [11];                          13314801 -9 ALMUERZO
+int const SERV_ONCE = 2;            int saldo_desayuno ;                    03686224 -6 ONCE
+int const SERV_CENA = 3;            int saldo_almuerzo ;                    78927357 - k CENA
+                                    int saldo_once ;                        03686224 -6 ONCE
+                                    int saldo_cena ;
+                                    }
+                                    no se actualizan, se consultan
+*/
+
+
+  string linea;
+  int contador = 0;
+
+  // recorrer hasta qe no queden líneas,,
+  while (getline(consumos, linea)) {
+    // variables de la línea
+    string rutt = linea.substr(0, 10);
+    string serv = linea.substr(11);
+
+    // comparar variables de la línea con las de los parámetros 
+    if (rutt == rut && servicio == serv) {
+      contador++;
+    }
+  }
